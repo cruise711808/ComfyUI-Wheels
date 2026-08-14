@@ -11,8 +11,8 @@ maintenance workflow details here.
   `cu<CUDA digits>torch<Torch major.minor>`.
 - Example: CUDA 13.2 with PyTorch 2.13 uses `cu132torch2.13/`.
 - Do not create a branch per CUDA or PyTorch version.
-- Store wheel files under `<package>/linux/` unless the repository later adopts
-  an explicit build-specific wheel storage layout.
+- Store each wheel beside its package `index.html` under
+  `<build combination>/<normalized package name>/`.
 - Publish GitHub Pages from the root of the `main` branch.
 
 Example index layout:
@@ -21,9 +21,11 @@ Example index layout:
 cu132torch2.13/
 ├── index.html
 ├── flash-attn/
-│   └── index.html
+│   ├── index.html
+│   └── flash_attn-2.8.4-cp314-cp314-linux_x86_64.whl
 └── sageattention/
-    └── index.html
+    ├── index.html
+    └── sageattention-2.2.0-cp314-cp314-linux_x86_64.whl
 ```
 
 ## Wheel naming and metadata
@@ -61,7 +63,7 @@ git lfs ls-files
 Example package link:
 
 ```html
-<a href="https://github.com/cruise711808/ComfyUI-Wheels/raw/refs/heads/main/flash_attn/linux/flash_attn-2.8.4-cp314-cp314-linux_x86_64.whl">flash_attn-2.8.4-cp314-cp314-linux_x86_64.whl</a>
+<a href="https://github.com/cruise711808/ComfyUI-Wheels/raw/refs/heads/main/cu132torch2.13/flash-attn/flash_attn-2.8.4-cp314-cp314-linux_x86_64.whl">flash_attn-2.8.4-cp314-cp314-linux_x86_64.whl</a>
 ```
 
 ## Adding a build combination
@@ -69,10 +71,9 @@ Example package link:
 1. Confirm the exact Python, PyTorch, CUDA, platform, and architecture versions
    used to build every wheel.
 2. Inspect each wheel's internal `METADATA` and confirm its name and version.
-3. Copy the wheel into its package storage directory and confirm Git LFS
-   tracking.
-4. Create the top-level build index, for example `cu128torch2.10/`.
-5. Create one normalized package directory and `index.html` per package.
+3. Create the top-level build index, for example `cu128torch2.10/`.
+4. Create one normalized package directory and `index.html` per package.
+5. Copy each wheel beside its package `index.html` and confirm Git LFS tracking.
 6. Add every package link to the build index root.
 7. Validate the HTML links and wheel filenames locally.
 8. Commit the wheels and index pages together, then push `main`.

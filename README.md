@@ -2,8 +2,8 @@
 
 ## 文件规范
 
-- 目录固定为：`<应用>/<平台>/<文件>`
-- 例如：`sageattention/linux/<wheel 文件>`
+- 目录固定为：`<CUDA与PyTorch组合>/<标准化包名>/<wheel 文件>`
+- 例如：`cu132torch2.13/sageattention/<wheel 文件>`
 - 只提交预编译的 `.whl` 文件，不提交 `build-info.json`、临时目录或构建缓存。
 - 文件名使用标准 wheel 格式：
   `<包名>-<版本>-<Python标签>-<ABI标签>-<平台标签>.whl`
