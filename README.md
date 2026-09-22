@@ -13,7 +13,9 @@
 
 ## pip/uv 索引
 
-本仓库为 CUDA 13.2、PyTorch 2.13 提供单层静态索引：
+本仓库按 CUDA 与 PyTorch 组合提供单层静态索引。
+
+### CUDA 13.2、PyTorch 2.13
 
 ```text
 https://cruise711808.github.io/ComfyUI-Wheels/cu132torch2.13/
@@ -26,6 +28,21 @@ uv pip install \
   --extra-index-url https://cruise711808.github.io/ComfyUI-Wheels/cu132torch2.13/ \
   --no-deps \
   flash-attn sageattention
+```
+
+### CUDA 13.2、PyTorch 2.14
+
+```text
+https://cruise711808.github.io/ComfyUI-Wheels/cu132torch2.14/
+```
+
+安装 SageAttention：
+
+```bash
+uv pip install \
+  --extra-index-url https://cruise711808.github.io/ComfyUI-Wheels/cu132torch2.14/ \
+  --no-deps \
+  sageattention
 ```
 
 索引根目录下的包名目录遵循 Python Simple Repository API 的名称规范；
